@@ -28,4 +28,8 @@ class PolicyObject:
     def parsePolicy(self, allowedUser, allowedString):
         pUsers = allowedUser.split(",")
         pAccess = allowedString.split(",")
-        return pUsers, pAccess
+        cleanAccess = []
+        for pItem in pAccess:
+            cleanAccess.append("RangerPolicyItemAccess({ 'type': '%s' })" % pItem)
+
+        return pUsers, cleanAccess
